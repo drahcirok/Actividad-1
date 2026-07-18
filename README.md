@@ -155,6 +155,8 @@ El Dashboard organiza la información en cuatro áreas principales:
 - Alertas de pacientes críticos.
 - Tabla con el detalle de todos los pacientes.
 - <img width="1917" height="980" alt="image" src="https://github.com/user-attachments/assets/4bd107d2-4cfa-4b3e-8c15-037763e0d1fe" />
+- <img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/f14b36ca-352a-4309-b013-311ecac3b590" />
+
 
 
 ## Indicadores Principales
