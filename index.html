@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Panel operativo de la sala de emergencias de Clínica San José." />
+  <title>Emergencias | Clínica San José</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { clinic: { 50: '#eef8ff', 100: '#d9efff', 500: '#1686c5', 600: '#096ca8', 700: '#075889', 900: '#0b3552' } },
+          boxShadow: { card: '0 8px 24px rgba(24, 51, 73, .07)' }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased">
+  <div class="min-h-screen">
+    <!-- Barra principal: concentra la información de sesión y acciones frecuentes. -->
+    <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <nav class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+        <div class="flex min-w-0 items-center gap-3">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-clinic-600 text-white shadow-lg shadow-clinic-600/20" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current"><path d="M19 3h-3V1h-3v2h-2V1H8v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm-1 9h-4v4h-4v-4H6V8h4V4h4v4h4v4Z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <p class="truncate text-base font-bold tracking-tight text-clinic-900 sm:text-lg">Clínica San José</p>
+            <p class="text-xs font-medium text-slate-500">Sala de Emergencias · Centro de control</p>
+          </div>
+        </div>
+        <div class="hidden items-center gap-6 lg:flex">
+          <div class="border-r border-slate-200 pr-6 text-right">
+            <p id="current-date" class="text-xs font-semibold text-slate-500"></p>
+            <p id="current-time" class="font-mono text-lg font-bold tabular-nums text-slate-800"></p>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="grid h-9 w-9 place-items-center rounded-full bg-clinic-100 text-sm font-bold text-clinic-700">DR</span>
+            <div><p class="text-xs text-slate-500">Director Médico</p><p class="text-sm font-semibold text-slate-700">Dr. Ricardo Molina</p></div>
+          </div>
+        </div>
+        <button id="refresh-button" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-clinic-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md shadow-clinic-600/20 transition hover:bg-clinic-700 focus:outline-none focus:ring-4 focus:ring-clinic-100" type="button">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 4v5h5M4 13a8.1 8.1 0 0 0 15.5 2M20 20v-5h-5"/></svg>
+          <span class="hidden sm:inline">Actualizar</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <section class="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+        <div><p class="eyebrow">Operación en tiempo real</p><h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">Estado de Emergencias</h1><p class="mt-1 text-sm text-slate-500">Monitoreo clínico para decisiones rápidas y seguras.</p></div>
+        <div class="status-live"><span class="pulse-dot"></span>Datos actualizados en vivo</div>
+      </section>
+
+      <!-- Indicadores de severidad: primero lo que necesita atención inmediata. -->
+      <section aria-label="Resumen de pacientes" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="kpi-card border-t-4 border-clinic-500"><div class="flex items-start justify-between"><div><p class="kpi-label">Total de pacientes</p><p id="total-patients" class="kpi-value">12</p></div><span class="icon-wrap bg-clinic-50 text-clinic-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div><div class="kpi-footer"><span class="trend trend-up">↑ 8.3%</span><span>vs. turno anterior</span></div></article>
+        <article class="kpi-card border-t-4 border-red-500"><div class="flex items-start justify-between"><div><p class="kpi-label">Pacientes críticos</p><p id="critical-count" class="kpi-value text-red-600">3</p></div><span class="icon-wrap bg-red-50 text-red-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg></span></div><div class="kpi-footer"><span class="trend trend-alert">↑ 1 caso</span><span>requieren intervención</span></div></article>
+        <article class="kpi-card border-t-4 border-orange-500"><div class="flex items-start justify-between"><div><p class="kpi-label">Pacientes graves</p><p id="severe-count" class="kpi-value text-orange-600">3</p></div><span class="icon-wrap bg-orange-50 text-orange-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2.5 2.5M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg></span></div><div class="kpi-footer"><span class="trend trend-up">↓ 1 caso</span><span>en vigilancia continua</span></div></article>
+        <article class="kpi-card border-t-4 border-emerald-500"><div class="flex items-start justify-between"><div><p class="kpi-label">Pacientes leves</p><p id="mild-count" class="kpi-value text-emerald-600">3</p></div><span class="icon-wrap bg-emerald-50 text-emerald-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5 2a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg></span></div><div class="kpi-footer"><span class="trend trend-good">↑ 2 casos</span><span>estables y en control</span></div></article>
+      </section>
+
+      <section aria-label="Capacidad operativa" class="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="capacity-card"><span class="capacity-icon bg-sky-50 text-sky-600">⌁</span><div><p>Camas observación</p><strong>4 <span>disponibles</span></strong></div><span class="mini-badge bg-sky-50 text-sky-700">40%</span></article>
+        <article class="capacity-card"><span class="capacity-icon bg-violet-50 text-violet-600">+</span><div><p>Camas UCI</p><strong>2 <span>disponibles</span></strong></div><span class="mini-badge bg-violet-50 text-violet-700">25%</span></article>
+        <article class="capacity-card"><span class="capacity-icon bg-emerald-50 text-emerald-600">♙</span><div><p>Médicos disponibles</p><strong>6 <span>en turno</span></strong></div><span class="mini-badge bg-emerald-50 text-emerald-700">Óptimo</span></article>
+        <article class="capacity-card"><span class="capacity-icon bg-amber-50 text-amber-600">↗</span><div><p>Esperando traslado</p><strong>2 <span>pacientes</span></strong></div><span class="mini-badge bg-amber-50 text-amber-700">Atención</span></article>
+      </section>
+
+      <div class="mt-7 grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
+        <div class="min-w-0 space-y-6">
+          <section aria-labelledby="alerts-title">
+            <div class="mb-3 flex items-center justify-between"><div><p class="eyebrow text-red-500">Prioridad máxima</p><h2 id="alerts-title" class="text-lg font-bold text-slate-800">Alertas críticas</h2></div><span class="rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600">Atención inmediata</span></div>
+            <div id="critical-alerts" class="grid gap-4 md:grid-cols-3"></div>
+          </section>
+
+          <section class="panel overflow-hidden" aria-labelledby="patients-title">
+            <div class="border-b border-slate-100 px-5 py-5 sm:px-6">
+              <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-center"><div><h2 id="patients-title" class="text-lg font-bold text-slate-800">Pacientes en emergencia</h2><p id="table-description" class="mt-0.5 text-sm text-slate-500">12 registros activos</p></div><div class="flex flex-col gap-2 sm:flex-row"><label class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="search-input" type="search" placeholder="Buscar paciente" aria-label="Buscar paciente" /></label><select id="status-filter" class="control" aria-label="Filtrar por estado"><option value="all">Todos los estados</option><option value="Crítico">Crítico</option><option value="Grave">Grave</option><option value="Moderado">Moderado</option><option value="Leve">Leve</option></select><select id="priority-sort" class="control" aria-label="Ordenar por prioridad"><option value="priority">Prioridad: alta a baja</option><option value="name">Nombre: A a Z</option></select></div></div>
+            </div>
+            <div class="overflow-x-auto"><table class="w-full min-w-[780px] text-left"><caption class="sr-only">Listado de pacientes actualmente atendidos en la sala de emergencias.</caption><thead><tr class="table-head"><th>Paciente</th><th>Edad</th><th>Estado</th><th>Presión</th><th>Temperatura</th><th>Hora ingreso</th><th>Prioridad</th><th class="text-right">Acción</th></tr></thead><tbody id="patients-table"></tbody></table></div>
+          </section>
+        </div>
+
+        <!-- Panel secundario: capacidad y tendencias sin competir con las alertas. -->
+        <aside class="space-y-6" aria-label="Recursos y métricas">
+          <section class="panel p-5"><div class="mb-5 flex items-center justify-between"><div><p class="eyebrow">Capacidad</p><h2 class="text-lg font-bold text-slate-800">Recursos hospitalarios</h2></div><span class="grid h-9 w-9 place-items-center rounded-lg bg-clinic-50 text-clinic-600">⌘</span></div><div class="space-y-5" id="resources"></div></section>
+          <section class="panel p-5"><p class="eyebrow">Distribución actual</p><h2 class="mb-5 text-lg font-bold text-slate-800">Pacientes por gravedad</h2><div id="severity-chart" class="space-y-4"></div></section>
+          <section class="panel p-5"><p class="eyebrow">Uso de capacidad</p><h2 class="mb-5 text-lg font-bold text-slate-800">Ocupación de camas</h2><div id="beds-chart" class="space-y-4"></div></section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="mt-6 border-t border-slate-200 bg-white"><div class="mx-auto flex max-w-[1600px] flex-col gap-1 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><p>Clínica San José <span class="mx-1 text-slate-300">•</span> Sistema de Emergencias</p><p>Última actualización: <span id="last-update" class="font-semibold text-slate-600">--:--</span> <span class="mx-1 text-slate-300">•</span> Versión 1.0.0</p></div></footer>
+  </div>
+
+  <!-- Modal reutilizable para ampliar el contexto clínico sin abandonar el tablero. -->
+  <div id="patient-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button id="close-modal" class="modal-close" aria-label="Cerrar detalle">×</button><p class="eyebrow">Ficha de atención</p><h2 id="modal-title" class="mt-1 text-xl font-bold text-slate-800"></h2><div id="modal-content" class="mt-5 grid gap-3 sm:grid-cols-2"></div></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite">Panel actualizado correctamente</div>
+  <script src="script.js"></script>
+</body>
+</html>
