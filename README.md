@@ -1,252 +1,231 @@
-# 🏥 Dashboard de Emergencias Médicas
-## Rediseño de Salidas Efectivas – Clínica San José
+# Dashboard de Emergencias Médicas
 
-> Proyecto académico desarrollado para la asignatura **Diseño de Salidas Efectivas**.  
-> Autor: ____________________________  
-> Fecha: ____________________________
+## Rediseño de Salidas Efectivas
 
----
+**Asignatura:** Desarrollo de Sistemas de Información
 
-## 📑 Tabla de Contenidos
-
-- [Introducción](#-introducción)
-- [Objetivos](#-objetivos)
-- [Contexto del Caso](#-contexto-del-caso)
-- [Análisis del Sistema Actual](#-análisis-del-sistema-actual)
-- [Selección Tecnológica](#-selección-tecnológica)
-- [Fundamentación Teórica](#-fundamentación-teórica)
-- [Diseño Propuesto](#-diseño-propuesto)
-- [Capturas del Dashboard](#-capturas-del-dashboard)
-- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Cómo Ejecutar el Proyecto](#-cómo-ejecutar-el-proyecto)
-- [Conclusiones](#-conclusiones)
+**Autor:** Richard Burgos
 
 ---
 
-## 📖 Introducción
+# Tabla de Contenidos
 
-La calidad de la información presentada dentro de un sistema influye directamente en la velocidad y precisión con la que los usuarios toman decisiones. Este aspecto adquiere especial importancia en entornos hospitalarios, donde la disponibilidad de recursos y el estado clínico de los pacientes pueden cambiar en cuestión de minutos.
-
-El presente proyecto desarrolla el rediseño del sistema de reportes de la sala de emergencias de la **Clínica San José**. El sistema original muestra la información mediante un reporte textual heredado, saturado y difícil de interpretar rápidamente. Como solución, se propone un **Dashboard interactivo moderno** que organiza la información mediante indicadores visuales, jerarquía gráfica y principios de diseño de interfaces.
-
-La propuesta se fundamenta en los conceptos estudiados en el tema **Diseño de Salidas Efectivas**, priorizando la usabilidad, la reducción de la carga cognitiva y la optimización de la toma de decisiones médicas.
-
----
-
-## 🎯 Objetivos
-
-### Objetivo General
-
-Diseñar un Dashboard interactivo que reemplace el reporte textual del sistema heredado de la Clínica San José, mejorando la visualización de la información clínica y facilitando la toma de decisiones en el área de emergencias.
-
-### Objetivos Específicos
-
-- Analizar las deficiencias presentes en el reporte original.
-- Aplicar el Modelo Conceptual de Diseño de Salidas (**Información, Presentación y Contexto**).
-- Implementar principios modernos de diseño de interfaces.
-- Diseñar indicadores visuales (KPIs) para monitorear el estado de la sala de emergencias.
-- Mejorar la experiencia del usuario mediante una interfaz clara, intuitiva y orientada a decisiones rápidas.
+1. Introducción
+2. Objetivos
+3. Contexto del Caso
+4. Análisis del Sistema Actual
+5. Selección Tecnológica
+6. Fundamentación Teórica
+7. Diseño Propuesto
+8. Evidencias del Diseño
+9. Tecnologías Utilizadas
+10. Estructura del Proyecto
+11. Ejecución del Proyecto
+12. Conclusiones
 
 ---
 
-## 🏥 Contexto del Caso
+# Introducción
 
-La **Clínica San José** enfrenta problemas de saturación en su sala de emergencias. El Director Médico, **Dr. Alejandro Silva**, necesita supervisar constantemente:
+Los sistemas de información tienen como propósito transformar datos en información útil que facilite la toma de decisiones. Sin embargo, para que esta información cumpla su objetivo, no basta con que sea correcta; también debe presentarse de manera clara, organizada y comprensible para el usuario que la recibe. Un diseño inadecuado de las salidas puede dificultar la interpretación de los datos, incrementar el tiempo de respuesta y aumentar la probabilidad de cometer errores durante la toma de decisiones.
 
-- Pacientes críticos que requieren traslado inmediato.
-- Disponibilidad de camas de observación y UCI.
-- Estado del personal médico de guardia.
-- Flujo de ingresos y altas médicas.
-- Alertas relacionadas con signos vitales fuera de rango.
+En el ámbito hospitalario, la forma en que se presenta la información adquiere una importancia aún mayor debido a que el personal médico trabaja en entornos donde el tiempo es un recurso crítico. La identificación rápida de pacientes en estado grave, la disponibilidad de camas y la asignación de recursos son actividades que requieren información actualizada y fácilmente interpretable.
 
-El sistema actual entrega esta información mediante un bloque de texto plano, lo que dificulta la identificación inmediata de prioridades clínicas y operativas.
+El presente proyecto desarrolla el rediseño del sistema de reportes de la sala de emergencias de la Clínica San José. A partir del análisis del reporte heredado proporcionado en el caso de estudio, se propone un Dashboard interactivo que organiza la información mediante indicadores visuales, tablas estructuradas y mecanismos de clasificación que permiten obtener una visión general del estado del servicio en pocos segundos.
+
+La propuesta se fundamenta en los principios del Diseño de Salidas Efectivas, incorporando criterios de usabilidad, organización de la información, jerarquía visual y diseño de interfaces con el propósito de mejorar la experiencia del usuario y apoyar el proceso de toma de decisiones.
 
 ---
 
-## 🔍 Análisis del Sistema Actual
+# Objetivos
 
-### Deficiencias Críticas Detectadas
+## Objetivo General
 
-| Problema | Impacto | Consecuencia |
-|---|---|---|
-| Información presentada en texto plano | Alta carga cognitiva | Mayor tiempo para encontrar pacientes críticos |
-| Ausencia de jerarquía visual | Baja legibilidad | Riesgo de pasar por alto emergencias |
-| Recursos hospitalarios ocultos al final | Baja visibilidad operativa | Retrasos en la asignación de camas |
-| Falta de filtros y ordenamiento | Baja eficiencia | Búsqueda manual de pacientes |
-| Ausencia de indicadores resumidos | Difícil monitoreo global | No existe una visión inmediata del estado de la sala |
+Diseñar un Dashboard digital para la sala de emergencias de la Clínica San José que sustituya el reporte textual del sistema heredado, mejorando la organización, visualización e interpretación de la información clínica necesaria para la toma de decisiones.
 
-### Deficiencia 1: Sobrecarga Cognitiva
+## Objetivos Específicos
 
-El reporte obliga al usuario a leer secuencialmente cada registro para identificar información relevante. Esta estructura incrementa el esfuerzo mental y retrasa la respuesta ante situaciones críticas.
-
-### Deficiencia 2: Ausencia de Jerarquía Visual
-
-Todos los datos poseen el mismo peso visual. No existen colores, tamaños tipográficos o agrupaciones que permitan distinguir rápidamente pacientes críticos de pacientes leves.
-
-### Deficiencia 3: Bajo Soporte para la Toma de Decisiones
-
-La información sobre camas, UCI y médicos disponibles aparece mezclada con datos clínicos, dificultando obtener una visión global del estado operativo del servicio.
+* Analizar las principales deficiencias presentes en el reporte generado por el sistema heredado.
+* Aplicar el Modelo Conceptual de Diseño de Salidas considerando los componentes de Información, Presentación y Contexto.
+* Incorporar principios de diseño de interfaces que mejoren la legibilidad y usabilidad del sistema.
+* Organizar la información mediante indicadores visuales que permitan identificar rápidamente el estado de los pacientes y la disponibilidad de recursos hospitalarios.
+* Diseñar una interfaz moderna orientada a facilitar la supervisión de la sala de emergencias por parte del Director Médico.
 
 ---
 
-## 🧩 Selección Tecnológica
+# Contexto del Caso
 
-### ¿Quién recibirá la información?
+La Clínica San José enfrenta problemas relacionados con la saturación de su sala de emergencias. El Director Médico necesita supervisar continuamente el estado de los pacientes, la ocupación de camas, la disponibilidad del personal médico y la necesidad de realizar traslados hacia unidades de mayor complejidad.
 
-El principal destinatario es el **Director Médico**, quien requiere una visión ejecutiva y priorizada del estado de la sala de emergencias para coordinar recursos y tomar decisiones inmediatas.
+El sistema utilizado actualmente genera un reporte en formato de texto plano que contiene todos los registros clínicos en una única pantalla. Aunque la información es completa, su organización dificulta la identificación rápida de pacientes críticos y limita la capacidad del Director Médico para obtener una visión general del estado operativo del servicio.
 
-### ¿Cómo accederá a ella?
-
-El sistema está diseñado para ejecutarse en computadoras de escritorio y tabletas dentro del hospital, con conexión permanente a la red institucional.
-
-### ¿Con qué rapidez se requiere?
-
-La información debe actualizarse prácticamente en tiempo real, ya que el estado clínico de los pacientes y la disponibilidad de recursos cambian constantemente.
-
-### ¿Qué nivel de interacción requiere?
-
-El dashboard debe permitir:
-
-- Filtrar pacientes por gravedad.
-- Buscar registros específicos.
-- Ordenar por prioridad clínica.
-- Visualizar alertas automáticas.
-- Consultar detalles individuales de un paciente.
+Con base en esta problemática, se plantea el desarrollo de un Dashboard que reorganice la información mediante componentes visuales capaces de presentar los datos de forma clara, priorizada y comprensible.
 
 ---
 
-## 📚 Fundamentación Teórica
+# Análisis del Sistema Actual
 
-### Modelo Conceptual Aplicado
+## Deficiencias Identificadas
 
-#### Información (Qué mostrar)
+| Problema identificado                                | Impacto generado                         | Consecuencia                                       |
+| ---------------------------------------------------- | ---------------------------------------- | -------------------------------------------------- |
+| Información presentada como texto continuo           | Incremento de la carga cognitiva         | Mayor tiempo para localizar información relevante  |
+| Ausencia de jerarquía visual                         | Baja facilidad de lectura                | Dificultad para identificar pacientes prioritarios |
+| Recursos hospitalarios ubicados al final del reporte | Escasa visibilidad del estado operativo  | Retraso en la toma de decisiones                   |
+| Información sin clasificación ni filtros             | Búsqueda completamente manual            | Disminución de la eficiencia del usuario           |
+| Falta de indicadores resumidos                       | No existe una visión global del servicio | Mayor dependencia de la lectura detallada          |
 
-Se priorizaron los datos que influyen directamente en la toma de decisiones:
+## Deficiencia 1. Sobrecarga de información
 
-- Total de pacientes.
-- Pacientes críticos.
-- Pacientes graves.
-- Disponibilidad de camas.
-- Médicos disponibles.
-- Pacientes pendientes de traslado a UCI.
+El sistema presenta todos los registros en un único bloque de texto, obligando al usuario a revisar cada línea para identificar pacientes prioritarios. Esta forma de presentar la información incrementa la carga cognitiva y dificulta la identificación inmediata de situaciones críticas.
 
-Los comentarios clínicos extensos fueron resumidos para conservar únicamente la información indispensable y reducir la sobrecarga cognitiva.
+## Deficiencia 2. Falta de jerarquía visual
 
-#### Presentación (Cómo mostrar)
+Todos los elementos del reporte poseen el mismo peso visual, sin utilizar colores, tamaños tipográficos o agrupaciones que permitan diferenciar la información según su importancia. Como resultado, los pacientes críticos no destacan sobre el resto de registros.
 
-La información se organiza mediante:
+## Deficiencia 3. Organización poco orientada a la toma de decisiones
 
-- Tarjetas KPI.
-- Códigos de color.
-- Tabla estructurada.
-- Iconografía.
-- Indicadores de alerta.
-
-La semaforización utilizada es:
-
-- 🟢 Leve
-- 🟡 Moderado
-- 🟠 Grave
-- 🔴 Crítico
-
-#### Contexto (A quién y cuándo)
-
-El dashboard responde a un entorno de urgencias donde las decisiones deben tomarse en segundos. La información crítica aparece primero para minimizar el tiempo de búsqueda y disminuir la probabilidad de errores.
+Los datos relacionados con la disponibilidad de camas y personal médico aparecen al final del reporte, mezclados con la información clínica. Esto dificulta obtener una visión rápida del estado operativo del servicio y retrasa la asignación de recursos.
 
 ---
 
-### Principios de Diseño Aplicados
+# Selección Tecnológica
 
-#### Jerarquía Visual
+## ¿Quién recibirá la información?
 
-Los indicadores más importantes se ubican en la parte superior mediante tarjetas grandes y colores de alto contraste, permitiendo identificar el estado general del servicio en pocos segundos.
+El sistema está dirigido al Director Médico de la Clínica San José, responsable de supervisar el funcionamiento de la sala de emergencias y coordinar la distribución de recursos humanos y materiales. Debido a sus funciones, requiere una interfaz que presente información resumida y organizada por niveles de prioridad.
 
-#### Simplicidad (Less is More)
+## ¿Cómo accederá a ella?
 
-Se eliminaron elementos redundantes y se resumieron los textos clínicos, conservando únicamente la información necesaria para la acción inmediata.
+El Dashboard está diseñado para utilizarse desde equipos de escritorio o dispositivos móviles institucionales conectados a la red hospitalaria. La interfaz responsive permite mantener una adecuada visualización independientemente del tamaño de la pantalla.
 
-#### Consistencia
+## ¿Con qué rapidez se requiere?
 
-Todos los componentes utilizan la misma estructura visual, tipografía y esquema de colores, reduciendo la curva de aprendizaje del sistema.
+La información debe actualizarse de forma continua debido a que el estado de los pacientes y la disponibilidad de recursos cambian constantemente. Una actualización oportuna permite reducir tiempos de respuesta y mejorar la coordinación del servicio.
 
-#### Accesibilidad
+## ¿Qué nivel de interacción requiere?
 
-Se emplearon contrastes adecuados, iconografía complementaria y tamaños de fuente legibles para facilitar la interpretación de la información en diferentes condiciones de uso.
-
----
-
-## 🖥️ Diseño Propuesto
-
-La interfaz se estructura en cuatro niveles principales:
-
-1. **Resumen ejecutivo** mediante KPIs.
-2. **Estado de recursos hospitalarios**.
-3. **Alertas de pacientes críticos**.
-4. **Tabla detallada de pacientes**.
-
-### Indicadores Principales (KPIs)
-
-| Indicador | Valor |
-|---|---:|
-| Total de pacientes | 12 |
-| Pacientes críticos | 4 |
-| Pacientes graves | 3 |
-| Pacientes leves | 3 |
-| Pacientes moderados | 2 |
-
-### Recursos Hospitalarios
-
-| Recurso | Disponibilidad |
-|---|---:|
-| Camas de observación | 0 / 10 |
-| Camas críticas | 0 / 3 |
-| Camas UCI | 1 / 8 |
-| Médicos disponibles | 1 |
-
-### Pacientes Prioritarios
-
-| Paciente | Estado | Acción Recomendada |
-|---|---|---|
-| Carlos Gómez | 🔴 Crítico | Traslado inmediato a UCI |
-| Sofía Mejía | 🔴 Crítico | Transferencia urgente |
-| Diana Loor | 🔴 Crítico | Evaluación neurológica inmediata |
-| Juan Pérez | 🟠 Grave | ECG y cama prioritaria |
+La solución incorpora mecanismos de interacción que permiten filtrar pacientes por nivel de gravedad, realizar búsquedas, ordenar registros por prioridad y visualizar información detallada cuando sea necesario. Estas funcionalidades contribuyen a optimizar el proceso de supervisión y seguimiento de pacientes.
 
 ---
 
-## 🖼️ Capturas del Dashboard
+# Fundamentación Teórica
 
-### Vista General
+## Modelo Conceptual
 
-![Dashboard Principal](img/dashboard.png)
+### Información
 
-### Panel de Alertas
+La propuesta prioriza la información necesaria para la toma de decisiones inmediatas. En lugar de mostrar comentarios clínicos extensos en todos los registros, se destacan indicadores relacionados con el número de pacientes, su nivel de gravedad, la disponibilidad de camas, el personal médico disponible y los pacientes que requieren traslado a la Unidad de Cuidados Intensivos.
 
-![Alertas Críticas](img/alertas.png)
+Esta organización permite disminuir la cantidad de información que el usuario debe procesar antes de identificar una situación crítica.
 
-### Vista Responsive
+### Presentación
 
-![Vista Tablet](img/responsive.png)
+La información se presenta mediante una estructura organizada en diferentes niveles. En la parte superior del Dashboard se incluyen indicadores clave de desempeño (KPIs) que resumen el estado general del servicio. Posteriormente se muestran las alertas prioritarias y finalmente una tabla con el detalle completo de los pacientes.
 
-> Las imágenes se encuentran en la carpeta `/img` del repositorio.
+La utilización de códigos de color facilita la identificación del nivel de gravedad de cada paciente.
+
+| Estado   | Color    |
+| -------- | -------- |
+| Leve     | Verde    |
+| Moderado | Amarillo |
+| Grave    | Naranja  |
+| Crítico  | Rojo     |
+
+Esta clasificación permite reconocer visualmente las prioridades sin necesidad de realizar una lectura completa del contenido.
+
+### Contexto
+
+El Dashboard ha sido diseñado considerando que será utilizado en un entorno hospitalario caracterizado por la necesidad de tomar decisiones rápidas y precisas. La organización de la información responde a este contexto, priorizando aquellos elementos que influyen directamente en la gestión de pacientes y recursos hospitalarios.
 
 ---
 
-## 💻 Tecnologías Utilizadas
+## Principios de Diseño de Interfaces Aplicados
 
-| Tecnología | Uso |
-|---|---|
-| HTML5 | Estructura del dashboard |
-| Tailwind CSS | Diseño y estilos |
-| JavaScript ES6 | Interactividad |
-| Heroicons / SVG | Iconografía |
-| Git | Control de versiones |
-| GitHub | Publicación del proyecto |
+### Jerarquía Visual
+
+La interfaz organiza los componentes de acuerdo con su nivel de importancia. Los indicadores principales se ubican en la parte superior, seguidos por las alertas críticas y posteriormente por el detalle de los pacientes. Esta distribución permite que el usuario identifique primero la información más relevante.
+
+### Simplicidad
+
+Se eliminaron elementos redundantes presentes en el reporte original y se resumieron los comentarios clínicos cuando fue posible. La reducción de información innecesaria favorece una interpretación más rápida y disminuye la carga cognitiva del usuario.
+
+### Consistencia
+
+Todos los componentes mantienen una estructura visual uniforme utilizando la misma tipografía, colores, distribución y estilos gráficos. Esta consistencia facilita el aprendizaje del sistema y mejora la experiencia de uso.
+
+### Accesibilidad
+
+La propuesta considera el uso de contrastes adecuados, tamaños de fuente legibles y códigos de color acompañados por etiquetas textuales. Estas decisiones permiten que la información pueda ser interpretada con mayor facilidad por diferentes tipos de usuarios.
 
 ---
 
-## 📂 Estructura del Proyecto
+# Diseño Propuesto
+
+El Dashboard organiza la información siguiendo un flujo de lectura que facilita la interpretación rápida del estado general de la sala de emergencias.
+
+La interfaz está compuesta por cuatro secciones principales:
+
+* Indicadores generales del servicio.
+* Estado de los recursos hospitalarios.
+* Alertas correspondientes a pacientes críticos.
+* Tabla detallada con la información de todos los pacientes.
+
+## Indicadores Principales
+
+| Indicador           | Valor |
+| ------------------- | ----: |
+| Total de pacientes  |    12 |
+| Pacientes críticos  |     4 |
+| Pacientes graves    |     3 |
+| Pacientes moderados |     2 |
+| Pacientes leves     |     3 |
+
+## Estado de Recursos
+
+| Recurso              | Disponibilidad |
+| -------------------- | -------------: |
+| Camas de observación |         0 / 10 |
+| Camas críticas       |          0 / 3 |
+| Camas UCI            |          1 / 8 |
+| Médicos disponibles  |              1 |
+
+## Pacientes Prioritarios
+
+| Paciente     | Estado  | Acción sugerida                    |
+| ------------ | ------- | ---------------------------------- |
+| Carlos Gómez | Crítico | Traslado inmediato a UCI           |
+| Sofía Mejía  | Crítico | Atención prioritaria               |
+| Diana Loor   | Crítico | Evaluación inmediata               |
+| Juan Pérez   | Grave   | Asignación prioritaria de recursos |
+
+---
+
+# Evidencias del Diseño
+
+Las capturas del Dashboard se encuentran almacenadas en la carpeta **img** del proyecto.
+
+* Vista general del Dashboard.
+* Panel de alertas.
+* Tabla de pacientes.
+* Visualización responsive.
+
+---
+
+# Tecnologías Utilizadas
+
+| Tecnología     | Finalidad                   |
+| -------------- | --------------------------- |
+| HTML5          | Estructura del sistema      |
+| Tailwind CSS   | Diseño de la interfaz       |
+| JavaScript ES6 | Funcionalidad e interacción |
+| Heroicons      | Iconografía                 |
+| Git            | Control de versiones        |
+| GitHub         | Publicación del proyecto    |
+
+---
+
+# Estructura del Proyecto
 
 ```text
 dashboard-emergencias/
@@ -262,49 +241,42 @@ dashboard-emergencias/
 └── assets/
 ```
 
-### Descripción de Archivos
+## Descripción de Archivos
 
-| Archivo | Descripción |
-|---|---|
-| `index.html` | Estructura principal del dashboard |
-| `style.css` | Estilos personalizados |
-| `script.js` | Funciones de interacción y actualización |
-| `README.md` | Documentación del proyecto |
-| `img/` | Capturas y recursos gráficos |
-
----
-
-## ▶️ Cómo Ejecutar el Proyecto
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/usuario/dashboard-emergencias.git
-   ```
-
-2. Ingresar a la carpeta del proyecto:
-   ```bash
-   cd dashboard-emergencias
-   ```
-
-3. Abrir el archivo `index.html` en cualquier navegador moderno.
-
-No se requieren dependencias ni procesos de compilación.
+| Archivo    | Descripción                             |
+| ---------- | --------------------------------------- |
+| index.html | Estructura principal del Dashboard      |
+| style.css  | Hoja de estilos personalizada           |
+| script.js  | Funciones de interacción                |
+| README.md  | Documentación del proyecto              |
+| img        | Capturas del diseño y recursos gráficos |
 
 ---
 
-## 📌 Conclusiones
+# Ejecución del Proyecto
 
-El rediseño propuesto demuestra cómo la aplicación adecuada de principios de diseño de interfaces y visualización de información puede transformar un reporte textual difícil de interpretar en una herramienta estratégica para la toma de decisiones.
+1. Clonar el repositorio.
 
-La incorporación de KPIs, jerarquía visual, códigos de color y organización por prioridades reduce significativamente la carga cognitiva del usuario y facilita la identificación inmediata de pacientes críticos y recursos disponibles. Estas mejoras incrementan la usabilidad del sistema y contribuyen a optimizar la eficiencia operativa dentro de un entorno hospitalario donde la rapidez y precisión son fundamentales.
+```bash
+git clone https://github.com/usuario/dashboard-emergencias.git
+```
 
-Finalmente, el proyecto evidencia la importancia del **Diseño de Salidas Efectivas** como disciplina orientada a convertir datos en información útil, comprensible y accionable para los distintos niveles de decisión dentro de una organización.
+2. Acceder al directorio del proyecto.
+
+```bash
+cd dashboard-emergencias
+```
+
+3. Abrir el archivo **index.html** en cualquier navegador web moderno.
+
+El proyecto no requiere instalación de dependencias adicionales ni procesos de compilación.
 
 ---
 
-<div align="center">
+# Conclusiones
 
-### 🏥 Clínica San José – Dashboard de Emergencias
-**Proyecto académico de Diseño de Salidas Efectivas**
+El desarrollo de este proyecto permitió aplicar los conceptos estudiados en la asignatura **Desarrollo de Sistemas de Información**, particularmente aquellos relacionados con el diseño de salidas orientadas al usuario. El análisis del sistema heredado evidenció que una presentación inadecuada de la información puede afectar la rapidez con la que se interpretan los datos y, en consecuencia, influir en la calidad de las decisiones tomadas por los responsables del servicio.
 
-</div>
+La propuesta presentada reorganiza la información mediante indicadores visuales, tablas estructuradas y una distribución jerárquica de los elementos, favoreciendo una interpretación más clara del estado general de la sala de emergencias. Asimismo, la incorporación de códigos de color y componentes visuales permite identificar con mayor rapidez las situaciones que requieren atención prioritaria.
+
+Finalmente, este trabajo pone de manifiesto la importancia del diseño de salidas dentro de los sistemas de información. Una adecuada presentación de los datos no solo mejora la experiencia del usuario, sino que también contribuye a que la información sea más útil, comprensible y oportuna para apoyar la toma de decisiones en contextos donde la rapidez y la precisión resultan fundamentales.
